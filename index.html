@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lions Youth Camp 2025</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #264653;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #2a9d8f;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav button {
+            color: white;
+            background-color: transparent;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        nav button:hover {
+            background-color: #264653;
+            transform: translateY(-2px);
+        }
+        nav button.active {
+            background-color: #e76f51;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Tab Content Styles */
+        .tab-content {
+            display: none;
+            padding: 40px 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Countdown Styles */
+        .countdown {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #e76f51;
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Titles */
+        h2 {
+            color: #e76f51;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Forms */
+        form label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        form input:focus, form textarea:focus {
+            border-color: #2a9d8f;
+            box-shadow: 0 0 5px rgba(42, 157, 143, 0.3);
+        }
+        form button {
+            background-color: #e76f51;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        form button:hover {
+            background-color: #264653;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #264653;
+            color: white;
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+            nav button {
+                flex: 1 1 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Lions Youth Camp 2025</h1>
+    </header>
+    <nav>
+        <button class="tab-btn active" data-tab="home">Home</button>
+        <button class="tab-btn" data-tab="committee">Committee</button>
+        <button class="tab-btn" data-tab="news">Camp Updates</button>
+        <button class="tab-btn" data-tab="schedule">Event Schedule</button>
+        <button class="tab-btn" data-tab="faq">FAQs</button>
+        <button class="tab-btn" data-tab="contact">Contact</button>
+    </nav>
+    <main>
+        <section id="home" class="tab-content active">
+            <h2>Welcome!</h2>
+            <div class="countdown">
+                <p>Countdown to Camp: <span id="countdown-timer">[Time Left]</span></p>
+            </div>
+            <p>We are thrilled to have you here! Lions Youth Camp 2025 promises to be a transformative experience. Navigate through the tabs above to explore more!</p>
+        </section>
+        <section id="committee" class="tab-content">
+            <h2>Committee List</h2>
+            <ul>
+                <li><strong>Chairperson:</strong> [Name]</li>
+                <li><strong>Vice Chairperson:</strong> [Name]</li>
+                <li><strong>Secretary:</strong> [Name]</li>
+                <li><strong>Treasurer:</strong> [Name]</li>
+            </ul>
+        </section>
+        <!-- Add other sections here -->
+    </main>
+    <footer>
+        <p>&copy; 2025 Lions Youth Camp. All rights reserved.</p>
+    </footer>
+    <script>
+        // Countdown Timer Script
+        const eventDate = new Date('2025-07-01T00:00:00'); // Camp start date
+        const timer = document.getElementById('countdown-timer');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = eventDate - now;
+
+            if (timeLeft <= 0) {
+                timer.textContent = "The camp has started!";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            timer.textContent = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // Tab Navigation Script
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(btn => btn.classList.remove('active'));
+                contents.forEach(content => content.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
